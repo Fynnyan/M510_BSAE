@@ -1,11 +1,11 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
-import { Ticket } from '../types';
-import { mockTickets } from '../data/tickets';
+import {createContext, ReactNode, useContext, useState} from 'react';
+import {Ticket} from '../types';
+import {mockTickets} from '../data/tickets';
 
 interface TicketsContextType {
   tickets: Ticket[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  addTicket: (ticket: any) => void;
+  addTicket: (ticket: Ticket) => void;
 }
 
 const TicketsContext = createContext<TicketsContextType>({
