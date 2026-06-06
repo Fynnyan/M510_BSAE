@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
-import './Einstellungen.css';
+import React, {useState} from 'react';
+import {PrimaryButton} from "../components/PrimaryButton.tsx";
+import {Button} from "@mui/material";
 
 // -----------------------------------------------------------------------
 // Einstellungen – CSS-Klassen-Buttons statt Inline-Styles (andere Herangehensweise)
@@ -19,21 +20,6 @@ const Einstellungen: React.FC = () => {
       <p style={{ color: '#777', marginTop: 0, marginBottom: '28px', fontSize: '14px' }}>
         Konfigurieren Sie die Anwendung nach Ihren Bedürfnissen.
       </p>
-
-      {/* Info-Banner – andere Karten-Optik als auf Dashboard */}
-      <div
-        style={{
-          background: '#e8f5e9',
-          borderLeft: '4px solid #43a047',
-          borderRadius: '4px',
-          padding: '12px 16px',
-          marginBottom: '28px',
-          fontSize: '14px',
-          color: '#2e7d32',
-        }}
-      >
-        Änderungen werden nach dem Klick auf «Sichern» übernommen.
-      </div>
 
       {/* ===== KARTE 1: FIRMENDATEN – flaches Design mit Header-Balken ===== */}
       <div
@@ -100,8 +86,8 @@ const Einstellungen: React.FC = () => {
 
           {/* Buttons via CSS-Klassen – «Sichern» statt «Speichern»! */}
           <div style={{ display: 'flex', gap: '10px', justifyContent: 'flex-end' }}>
-            <button className="btn-abbrechen">Abbrechen</button>
-            <button className="btn-sichern">Sichern</button>
+              <Button variant={"outlined"}>Abbrechen</Button>
+              <PrimaryButton>Speichern</PrimaryButton>
           </div>
         </div>
       </div>
@@ -165,19 +151,7 @@ const Einstellungen: React.FC = () => {
 
           {/* Inline-Style-Button «Speichern» – absichtlich andere Beschriftung als «Sichern» oben */}
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <button
-              style={{
-                padding: '9px 24px',
-                backgroundColor: '#1976d2',
-                color: 'white',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontSize: '14px',
-              }}
-            >
-              Speichern
-            </button>
+              <PrimaryButton>Speichern</PrimaryButton>
           </div>
         </div>
       </div>
@@ -227,20 +201,7 @@ const Einstellungen: React.FC = () => {
 
           {/* Noch eine weitere Button-Variante: grüner Outline-Button */}
           <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-            <button
-              style={{
-                padding: '7px 20px',
-                backgroundColor: 'transparent',
-                color: '#2e7d32',
-                border: '2px solid #2e7d32',
-                borderRadius: '6px',
-                cursor: 'pointer',
-                fontSize: '14px',
-                fontWeight: 600,
-              }}
-            >
-              Save
-            </button>
+              <PrimaryButton>Speichern</PrimaryButton>
           </div>
         </div>
       </div>

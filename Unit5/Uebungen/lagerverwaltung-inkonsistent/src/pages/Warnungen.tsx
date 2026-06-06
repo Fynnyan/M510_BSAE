@@ -1,5 +1,9 @@
 import React from 'react';
-import { artikel } from '../data/mockData';
+import {artikel} from '../data/mockData';
+import {StatusChip} from "../components/StatusChip.tsx";
+import {PrimaryButton} from "../components/PrimaryButton.tsx";
+import {MetricCard} from "../components/MetricCard.tsx";
+import {Alert} from "@mui/material";
 
 // -----------------------------------------------------------------------
 // Warnungen – absichtlich wieder andere Button- und Status-Darstellung
@@ -15,67 +19,13 @@ const Warnungen: React.FC = () => {
       <h1 style={{ marginBottom: '6px', color: '#b71c1c', fontSize: '24px' }}>
         ⚠ Warnungen
       </h1>
-      <p style={{ color: '#777', marginTop: 0, marginBottom: '28px', fontSize: '14px' }}>
-        {gesamtWarnungen} Artikel erfordern sofortige Aufmerksamkeit
-      </p>
+        <Alert sx={{marginBottom:"0.5rem"}} severity={"warning"}>{gesamtWarnungen} Artikel erfordern sofortige Aufmerksamkeit</Alert>
 
       {/* ===== STATISTIK-KARTEN – absichtlich anders als auf Dashboard ===== */}
       {/* Dashboard: gefüllte Karten · Warnungen: nur Rahmen, riesige Zahlen */}
       <div style={{ display: 'flex', gap: '20px', marginBottom: '36px', flexWrap: 'wrap' }}>
-
-        {/* Karte: oranger Rahmen, kein Hintergrund, zentriert */}
-        <div
-          style={{
-            border: '3px solid #ff9800',
-            borderRadius: '8px',
-            padding: '20px 28px',
-            textAlign: 'center',
-            minWidth: '150px',
-          }}
-        >
-          <div style={{ fontSize: '52px', fontWeight: 'bold', color: '#e65100', lineHeight: 1 }}>
-            {kritisch.length}
-          </div>
-          <div
-            style={{
-              color: '#ff9800',
-              fontSize: '11px',
-              fontWeight: 'bold',
-              marginTop: '8px',
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-            }}
-          >
-            Kritisch
-          </div>
-        </div>
-
-        {/* Karte: roter Rahmen – gleiche Struktur, aber andere Farbe */}
-        <div
-          style={{
-            border: '3px solid #f44336',
-            borderRadius: '8px',
-            padding: '20px 28px',
-            textAlign: 'center',
-            minWidth: '150px',
-          }}
-        >
-          <div style={{ fontSize: '52px', fontWeight: 'bold', color: '#d32f2f', lineHeight: 1 }}>
-            {nichtVerfuegbar.length}
-          </div>
-          <div
-            style={{
-              color: '#f44336',
-              fontSize: '11px',
-              fontWeight: 'bold',
-              marginTop: '8px',
-              textTransform: 'uppercase',
-              letterSpacing: '1px',
-            }}
-          >
-            Nicht verfügbar
-          </div>
-        </div>
+          <MetricCard label={"Kritisch"} value={kritisch.length} variant={"warning"}/>
+          <MetricCard label={"Nicht verfügbar"} value={nichtVerfuegbar.length} variant={"critical"}/>
       </div>
 
       {/* ===== KRITISCHE ARTIKEL ===== */}
@@ -119,28 +69,8 @@ const Warnungen: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                {/* Status-Label: nur farbiger Text in Grossbuchstaben – keine Badge-Form */}
-                <span style={{ color: '#e65100', fontWeight: 'bold', fontSize: '13px' }}>
-                  KRITISCH
-                </span>
-
-                {/* Button: orange, eckig, Grossbuchstaben – ganz anders als Dashboard */}
-                <button
-                  style={{
-                    backgroundColor: '#e65100',
-                    color: 'white',
-                    padding: '8px 16px',
-                    border: 'none',
-                    borderRadius: '2px',
-                    cursor: 'pointer',
-                    fontSize: '13px',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                    letterSpacing: '0.5px',
-                  }}
-                >
-                  Bestellen
-                </button>
+                  <StatusChip status={"kritisch"} />
+                  <PrimaryButton>Bestellen</PrimaryButton>
               </div>
             </div>
           ))}
@@ -187,36 +117,8 @@ const Warnungen: React.FC = () => {
               </div>
 
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                {/* Status-Label: schwarze Box mit weissem Text – wieder andere Form */}
-                <span
-                  style={{
-                    backgroundColor: '#d32f2f',
-                    color: 'white',
-                    padding: '3px 8px',
-                    fontSize: '11px',
-                    fontWeight: 'bold',
-                    textTransform: 'uppercase',
-                    letterSpacing: '1px',
-                  }}
-                >
-                  Ausverkauft
-                </span>
-
-                {/* Button: rund, anderer Text als oben ("Jetzt bestellen" statt "Bestellen") */}
-                <button
-                  style={{
-                    backgroundColor: '#d32f2f',
-                    color: 'white',
-                    padding: '6px 20px',
-                    border: 'none',
-                    borderRadius: '20px',
-                    cursor: 'pointer',
-                    fontSize: '13px',
-                    fontWeight: 600,
-                  }}
-                >
-                  Jetzt bestellen
-                </button>
+                <StatusChip status={"nicht-verfügbar"} label={"Ausverkauft"}/>
+                  <PrimaryButton>Jetzt bestellen</PrimaryButton>
               </div>
             </div>
           ))}

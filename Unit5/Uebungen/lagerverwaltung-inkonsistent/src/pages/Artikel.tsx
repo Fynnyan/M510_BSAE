@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { artikel as alleArtikel } from '../data/mockData';
-import { Artikel, ArtikelStatus } from '../types';
+import React, {useState} from 'react';
+import {artikel as alleArtikel} from '../data/mockData';
+import {Artikel, ArtikelStatus} from '../types';
+import {PrimaryButton} from "../components/PrimaryButton.tsx";
 
 // -----------------------------------------------------------------------
 // Artikelseite – absichtlich andere Button- und Status-Chip-Stile als Dashboard
@@ -41,22 +42,7 @@ const ArtikelSeite: React.FC = () => {
             {artikelListe.length} Artikel im System
           </p>
         </div>
-
-        {/* Primär-Button: grün, grösser, fett – absichtlich anders als blau auf Dashboard */}
-        <button
-          style={{
-            backgroundColor: '#2e7d32',
-            color: 'white',
-            padding: '10px 24px',
-            border: 'none',
-            borderRadius: '6px',
-            cursor: 'pointer',
-            fontSize: '15px',
-            fontWeight: 'bold',
-          }}
-        >
-          + Neuer Artikel
-        </button>
+          <PrimaryButton >+ Neuer Artikel</PrimaryButton>
       </div>
 
       {/* Filter-Buttons: Pill-Form, wieder anderes Styling */}
