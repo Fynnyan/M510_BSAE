@@ -1,8 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import {RouteElement, routes} from "../routes.ts";
 
 // Sidebar-Navigation – wird auf allen Seiten angezeigt
-// TODO: Weitere Navigationspunkte (Artikel, Warnungen, Einstellungen) hinzufügen
 function Sidebar(): React.ReactElement {
   return (
     <aside className="sidebar">
@@ -13,16 +13,18 @@ function Sidebar(): React.ReactElement {
 
       <nav>
         <ul className="nav-menu">
-          <li className="nav-item">
-            <NavLink
-              to="/"
-              end
-              className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
-            >
-              <span className="nav-icon">🏠</span>
-              Dashboard
-            </NavLink>
-          </li>
+            {Object.keys(routes).map(key => {
+                const entry: RouteElement = routes[key]
+                return <li className="nav-item" key={key}>
+                    <NavLink
+                        to={entry.path}
+                        className={({ isActive }) => isActive ? 'nav-link active' : 'nav-link'}
+                    >
+                        {entry.icon && <span className="nav-icon">{entry.icon}</span>}
+                        {entry.name}
+                    </NavLink>
+                </li>
+            })}
         </ul>
       </nav>
     </aside>

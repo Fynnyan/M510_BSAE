@@ -6,6 +6,7 @@ import Articles from './pages/Articles'
 import Warnings from './pages/Warnings'
 import Settings from './pages/Settings'
 import './App.css'
+import {routes} from "./routes.ts";
 
 // Hauptkomponente – definiert das Layout und alle Routen
 function App(): React.ReactElement {
@@ -18,10 +19,10 @@ function App(): React.ReactElement {
         {/* Hauptinhalt – wechselt je nach aktiver Route */}
         <main className="main-content">
           <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/artikel" element={<Articles />} />
-            <Route path="/warnungen" element={<Warnings />} />
-            <Route path="/einstellungen" element={<Settings />} />
+            <Route path={routes.dashboard.path} element={<Dashboard />} />
+            <Route path={routes.articles.path} element={<Articles />} />
+            <Route path={routes.warnings.path} element={<Warnings />} />
+            <Route path={routes.settings.path} element={<Settings />} />
           </Routes>
         </main>
       </div>
