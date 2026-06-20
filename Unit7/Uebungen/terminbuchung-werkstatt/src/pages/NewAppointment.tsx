@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Appointment, ServiceType } from '../types/appointment';
+import {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {Appointment, ServiceType} from '../types/appointment';
 
 interface FormData {
   customerName: string;
@@ -73,13 +73,9 @@ export default function NewAppointment() {
   return (
     <div className="page">
       <h1>Termin buchen</h1>
-
-      {/* UX-Schwäche: Kein einleitender Hinweistext erklärt,
-          welche Angaben benötigt werden oder wie das Formular funktioniert */}
-
+      
       <form className="form" onSubmit={handleSubmit} noValidate>
         <div className="form-group">
-          {/* UX-Schwäche: Kein Asterisk (*) für Pflichtfelder */}
           <label htmlFor="customerName">Name</label>
           <input
             id="customerName"
@@ -125,38 +121,39 @@ export default function NewAppointment() {
           {errors.serviceType && <span className="form-error">{errors.serviceType}</span>}
         </div>
 
-        {/* UX-Schwäche: Datum und Uhrzeit stehen in zwei getrennten Spalten ohne
-            erklärenden Kontext – Reihenfolge und Format sind nicht selbsterklärend */}
-        <div className="form-row">
-          <div className="form-group">
-            <label htmlFor="date">Datum</label>
-            <input
-              id="date"
-              name="date"
-              type="date"
-              value={formData.date}
-              onChange={handleChange}
-              className={errors.date ? 'input-error' : ''}
-            />
-            {errors.date && <span className="form-error">{errors.date}</span>}
-          </div>
+        <div className="form-group">
+          <span className="form-group__title">Datum &amp; Uhrzeit für ihren Wunschtermin</span>
+          <div className="form-row">
+            <div className="form-group">
+              <label htmlFor="date">Datum</label>
+              <input
+                id="date"
+                name="date"
+                type="date"
+                value={formData.date}
+                onChange={handleChange}
+                className={errors.date ? 'input-error' : ''}
+              />
+              {errors.date && <span className="form-error">{errors.date}</span>}
+            </div>
 
-          <div className="form-group">
-            <label htmlFor="time">Uhrzeit</label>
-            <input
-              id="time"
-              name="time"
-              type="time"
-              value={formData.time}
-              onChange={handleChange}
-              className={errors.time ? 'input-error' : ''}
-            />
-            {errors.time && <span className="form-error">{errors.time}</span>}
+            <div className="form-group">
+              <label htmlFor="time">Uhrzeit</label>
+              <input
+                id="time"
+                name="time"
+                type="time"
+                value={formData.time}
+                onChange={handleChange}
+                className={errors.time ? 'input-error' : ''}
+              />
+              {errors.time && <span className="form-error">{errors.time}</span>}
+            </div>
           </div>
         </div>
 
         <div className="form-group">
-          <label htmlFor="note">Bemerkung</label>
+          <label htmlFor="note">Bemerkung <span style={{ color: 'gray' }}>(optional)</span></label>
           <textarea
             id="note"
             name="note"
@@ -167,8 +164,6 @@ export default function NewAppointment() {
           />
         </div>
 
-        {/* UX-Schwäche: Hauptaktion „Buchen" und Nebenaktion „Abbrechen"
-            sind optisch kaum unterscheidbar – gleiche Grösse, ähnliches Gewicht */}
         <div className="form-actions">
           <button type="submit" className="btn btn-action">
             Buchen

@@ -330,6 +330,18 @@ body {
   margin-top: 16px;
 }
 
+.form-helptext {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.form-group__title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
 .form-group {
   display: flex;
   flex-direction: column;
