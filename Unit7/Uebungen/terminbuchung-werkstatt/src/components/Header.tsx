@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 export default function Header() {
   return (
@@ -6,6 +6,11 @@ export default function Header() {
       <div className="header__brand">
         <span className="header__logo">🔧</span>
         <span className="header__title">Werkstatt Termine</span>
+      </div>
+      <div>
+        <Link to="/termine/neu" className="btn btn-success">
+          Neuen Termin Buchen
+        </Link>
       </div>
       {/* UX-Schwäche: kein deutliches Active-Highlighting – aktuell aktive Seite
           ist nur subtil erkennbar */}

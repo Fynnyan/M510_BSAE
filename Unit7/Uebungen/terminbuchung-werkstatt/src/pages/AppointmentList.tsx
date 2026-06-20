@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { mockAppointments } from '../data/mockAppointments';
+import {Link} from 'react-router-dom';
+import {mockAppointments} from '../data/mockAppointments';
 import AppointmentCard from '../components/AppointmentCard';
 
 export default function AppointmentList() {
@@ -18,8 +18,8 @@ export default function AppointmentList() {
 
       {/* UX-Schwäche: Button am Ende der Liste – Nutzer scrollen an ihm vorbei */}
       <div className="list-bottom-action">
-        <Link to="/termine/neu" className="btn btn-plain">
-          Neuen Termin buchen
+        <Link to="/termine/neu" className="btn btn-success">
+          Neuen Termin Buchen
         </Link>
       </div>
     </div>
